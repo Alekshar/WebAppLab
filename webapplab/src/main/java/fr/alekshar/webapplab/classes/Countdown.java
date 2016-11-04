@@ -14,8 +14,7 @@ public class Countdown {
 	public Countdown(String userid, String dateString) throws ParseException {
 		super();
 		this.userid = userid;
-		this.date = format.parse(dateString);
-		this.dateString = dateString;
+		this.setDateString(dateString);
 	}
 
 	public String getDiffString() {
@@ -50,6 +49,11 @@ public class Countdown {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public void setDateString(String dateString) throws ParseException {
+		this.dateString = dateString;
+		this.date = format.parse(dateString);
 	}
 	
 	

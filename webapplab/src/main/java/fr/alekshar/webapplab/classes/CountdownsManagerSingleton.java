@@ -1,5 +1,6 @@
 package fr.alekshar.webapplab.classes;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -55,6 +56,24 @@ public final class CountdownsManagerSingleton {
 		}
 		if(found != null){
 			list.remove(found);
+		}
+	}
+
+	public void updateCountdown(String userid, int counterid, String newDateString) {
+		List<Countdown> list = map.get(userid);
+		Countdown found = null;
+		for(Countdown element : list){
+			if(element.getId() == counterid){
+				found = element;
+				break;
+			}
+		}
+		if(found != null){
+			try {
+				found.setDateString(newDateString);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	

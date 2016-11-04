@@ -2,7 +2,9 @@ package fr.alekshar.webapplab.classes;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+import javax.servlet.annotation.WebListener;
 
+@WebListener 
 public class ThreadsManager implements ServletContextListener {
 
 	private static SocketsCountdownThread thread;
