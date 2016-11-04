@@ -1,36 +1,25 @@
 <%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" 
+           uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8" />
-	<title>CountDown</title>
-	<style>
-	blockquote {
-		font-style: italic;
-		padding: 20px;
-	}
-
-	blockquote footer{
-		color:#555;
-		font-weight: bold
-	}
-	</style>
+	<title>CountDownApp</title>
 </head>
-
 <body>
-	<blockquote>
-	&laquo; Il reste
-	<%
-            String diff = (String) request.getAttribute("diff");
-            out.println( diff );
-	%>
-	avant la fin de ce cours ! &raquo;
-	<footer>
-	<%
-            String parametre = request.getParameter( "author" );
-            out.println( parametre );
-	%>
-	</footer>
-	</blockquote>
+	Bonjour ${user} <br />
+	<input type="text" id="message" value=""><br />
+	
+
+
+	<input type="hidden" id="userid" value="${user }">
+	<script type="text/javascript">
+		var userid = document.getElementById("userid").value;
+		var socket = new WebSocket("ws://"+window.location.host+window.location.pathname+"websocket/"+userid);
+		socket.onmessage = function(msg){
+			document.getElementById("message").value=msg.data;
+		};
+	</script>
 </body>
 </html>

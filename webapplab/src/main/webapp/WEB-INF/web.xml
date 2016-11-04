@@ -1,14 +1,20 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
-
-<web-app>
+<web-app  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+    version="2.5">
 	<servlet>
 		<servlet-name>login</servlet-name>
-		<servlet-class>fr.alekshar.webbapplab.LoginServlet</servlet-class>
+		<servlet-class>fr.alekshar.webapplab.servlets.LoginServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>login</servlet-name>
-		<url-pattern>/</url-pattern>
+		<url-pattern>/login</url-pattern>
 	</servlet-mapping>
+	<welcome-file-list>
+	    <welcome-file>login</welcome-file>
+	</welcome-file-list>
+	 <listener>
+       <listener-class>fr.alekshar.webapplab.classes.ThreadsManager</listener-class>
+    </listener>
 </web-app>
