@@ -3,7 +3,10 @@ package fr.alekshar.webapplab.classes;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.websocket.MessageHandler;
 import javax.websocket.Session;
+
+import fr.alekshar.webapplab.classes.countdown.CountdownMessagesUtil;
 
 public final class WebsocketManagerSingleton {
 	private static WebsocketManagerSingleton instance;
@@ -21,6 +24,11 @@ public final class WebsocketManagerSingleton {
 
 	public void connect(String userid, Session session) {
 		list.add(new UserSession(session, userid));
+		session.addMessageHandler(new MessageHandler.Whole<String>() {
+            public void onMessage(String message) {
+            	CountdownMessagesUtil.process(message);
+            }
+        });
 	}
 
 	public void disconnect(String userid, Session session) {
@@ -35,6 +43,8 @@ public final class WebsocketManagerSingleton {
 			list.remove(found);
 		}
 	}
+
+	
 
 	public List<UserSession> getSessions() {
 		return new ArrayList<UserSession>(list);

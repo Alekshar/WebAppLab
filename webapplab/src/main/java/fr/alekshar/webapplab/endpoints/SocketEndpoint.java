@@ -1,7 +1,5 @@
 package fr.alekshar.webapplab.endpoints;
 
-import java.io.IOException;
-
 import javax.websocket.CloseReason;
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
@@ -18,13 +16,8 @@ public class SocketEndpoint {
 	@OnOpen
 	public void onOpen(Session session, @PathParam("userid") String userid){
 		WebsocketManagerSingleton.getInstance().connect(userid, session);
-		try {
-			session.getBasicRemote().sendText("test");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
-
+	
     @OnClose
     public void onClose(Session session, CloseReason closeReason, @PathParam("userid") String userid) {
     	WebsocketManagerSingleton.getInstance().disconnect(userid, session);
