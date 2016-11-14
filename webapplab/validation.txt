@@ -6,7 +6,8 @@ Liste d'actions et suivi du report des événements dans un second onglet du navig
 5: Modifier le fuseau horaire d'un compteur
 6: Supprimer un compteur
 7: Vérifier la mise à jour progressive des compteurs
-8: Vérifier la persistence des compteurs après le redémarrage du navigateur
+8: Vérifier la persistence des compteurs après le redémarrage du navigateur 
+			-> non fonctionnel sur Internet Explorer à cause de la politique de suppression des cookies
 9: Vérifier la persistence des compteurs après le redémarrage du serveur
 
 
@@ -15,5 +16,4 @@ Chrome 54
 Firefox 49
 Internet Explorer 11
 
-Erreur : Firefox et IE ne supportent pas input[type="datetime-local"]
-
+Erreur : cookie valable uniquement pour une session (passer a cookies permanents)

@@ -33,6 +33,8 @@ public class LoginManager {
 	}
 
 	public Cookie getCookie() {
-		return new Cookie(USER_TAG, userid);
+		Cookie cookie = new Cookie(USER_TAG, userid);
+		cookie.setMaxAge(31536000); //one year before expiration
+		return cookie ;
 	}
 }
