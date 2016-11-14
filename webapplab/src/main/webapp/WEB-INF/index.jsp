@@ -6,14 +6,25 @@
 <head>
 	<meta charset="utf-8" />
 	<title>CountDownApp</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css" />
 	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script src="js/jquery-2.2.4.min.js"></script>
+	<script src="js/moment-with-locales.js"></script>
+	<script src="js/bootstrap-datetime.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 </head>
 <body ng-app="app">
 	Bonjour ${user} <br />
 	 <br />
 	<div ng-controller="inputCtrl">
 		<label>Nom : </label><input type="text" ng-model="name" value=""><br />
-		<label>Date compteur : </label><input type="datetime-local" ng-model="countdown" value="" ><br />
+<!-- 		<input type="datetime-local" ng-model="countdown" value="" ><br /> -->
+		<label>Date compteur : </label>
+		<span style="position:relative">
+			<input type='text' id='datetimepicker1' />
+		</span>
+		<br />
 		<label>Fuseau horaire : </label><select ng-init="timezone='+01:00'" ng-model="timezone">
 		      <option value="-12:00">(GMT -12:00) Eniwetok, Kwajalein</option>
 		      <option value="-11:00">(GMT -11:00) Midway Island, Samoa</option>
@@ -71,6 +82,10 @@
 	var app = angular.module("app", []);
 	var inputScope;
 	
+	$('#datetimepicker1').datetimepicker({
+        format: 'YYYY-MM-DD HH:mm:ss',
+    });
+	
 	app.controller("inputCtrl", function($scope){
 		inputScope = $scope;
 		
@@ -81,7 +96,7 @@
 				action:"create",
 				userid:userid,
 				name:$scope.name,
-				date:$scope.countdown.toISOString().split(".")[0],
+				date:$('#datetimepicker1').val().replace(" ", "T"),
 				timezone:$scope.timezone
 			}));
 			$scope.name = "";
@@ -96,7 +111,7 @@
 			$scope.id = countdown.id;
 			$scope.event = $scope.updateCountdown;
 			$scope.name = countdown.name;
-			$scope.countdown = new Date(countdown.date);
+			$('#datetimepicker1').val(countdown.date.replace("T", " "));
 			$scope.timezone = countdown.timezone;
 		};
 		
@@ -107,7 +122,7 @@
 				id:$scope.id,
 				userid:userid,
 				name:$scope.name,
-				date:$scope.countdown.toISOString().split(".")[0],
+				date:$('#datetimepicker1').val().replace(" ", "T"),
 				timezone:$scope.timezone
 			}));
 			$scope.action = "Ajouter";

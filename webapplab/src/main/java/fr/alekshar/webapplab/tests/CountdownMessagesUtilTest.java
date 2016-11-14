@@ -2,6 +2,8 @@ package fr.alekshar.webapplab.tests;
 
 import static org.junit.Assert.assertEquals;
 
+import java.io.File;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -15,6 +17,7 @@ public class CountdownMessagesUtilTest {
 
 	@BeforeClass
 	public static void beforeclass() {
+		new File("database.db").delete();
 		manager = CountdownsManagerSingleton.getInstance();
 	}
 

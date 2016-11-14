@@ -4,7 +4,7 @@ Liste d'actions et suivi du report des événements dans un second onglet du navig
 3: Modifier le nom d'un compteur
 4: Modifier la date d'un compteur
 5: Modifier le fuseau horaire d'un compteur
-6: Supprimer un fuseau horaire
+6: Supprimer un compteur
 7: Vérifier la mise à jour progressive des compteurs
 8: Vérifier la persistence des compteurs après le redémarrage du navigateur
 9: Vérifier la persistence des compteurs après le redémarrage du serveur
@@ -16,3 +16,4 @@ Firefox 49
 Internet Explorer 11
 
 Erreur : Firefox et IE ne supportent pas input[type="datetime-local"]
+
