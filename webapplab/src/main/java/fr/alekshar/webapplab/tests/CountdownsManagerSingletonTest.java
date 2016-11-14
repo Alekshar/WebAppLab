@@ -4,14 +4,20 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
+import java.io.File;
 import java.text.ParseException;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import fr.alekshar.webapplab.classes.countdown.Countdown;
 import fr.alekshar.webapplab.classes.countdown.CountdownsManagerSingleton;
 
 public class CountdownsManagerSingletonTest {
+	@BeforeClass
+	public static void before(){
+		new File("database.db").delete();
+	}
 
 	@Test
 	public void test_create_remove() throws ParseException {

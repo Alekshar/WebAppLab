@@ -1,6 +1,7 @@
 package fr.alekshar.webapplab.classes.countdown;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -101,8 +102,9 @@ public final class CountdownsManagerSingleton {
 	         map = (Map) in.readObject();
 	         in.close();
 	         fileIn.close();
+	      }catch(FileNotFoundException e) {
 	      }catch(IOException i) {
-	         i.printStackTrace();
+		         i.printStackTrace();
 	      }catch(ClassNotFoundException c) {
 	         System.out.println("Employee class not found");
 	         c.printStackTrace();
